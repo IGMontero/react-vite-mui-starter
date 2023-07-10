@@ -1,14 +1,16 @@
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signIn, SignInMethod } from '../../core/firebase.js'
+import { signIn, SignInMethod, signUpWithEmail } from '../../core/firebase.js'
 
 /**
  * Handles login / signup via Email
  */
 export function useHandleSubmit(
-  state: State
+  state: State,
+  setState: SetState
 ): [submit: React.FormEventHandler, inFlight: boolean] {
   const [inFlight, setInFlight] = React.useState(false)
+  const navigate = useNavigate()
 
   return [
     React.useCallback(
@@ -16,14 +18,34 @@ export function useHandleSubmit(
         event.preventDefault()
         try {
           setInFlight(true)
-          console.log(state.email)
-          await new Promise((resolve) => setTimeout(resolve, 1000))
-          throw new Error('Not implemented')
+
+          let credential
+          if (state.mode === 'login') {
+            const method = 'email'
+            credential = await signIn({
+              method,
+              email: state.email,
+              password: state.password
+            })
+          } else {
+            credential = await signUpWithEmail({
+              email: state.email,
+              password: state.password
+            })
+          }
+
+          if (credential.user) {
+            setState((prev) => (prev.error ? { ...prev, error: null } : prev))
+            navigate('/')
+          }
+        } catch (err) {
+          const error = (err as Error)?.message ?? 'Login failed.'
+          setState((prev) => ({ ...prev, error }))
         } finally {
           setInFlight(false)
         }
       },
-      [state.email]
+      [state.email, state.password, state.mode]
     ),
     inFlight
   ]
@@ -36,6 +58,7 @@ export function useState(props: Props) {
   return React.useState({
     mode: props.mode,
     email: '',
+    password: '',
     code: '',
     saml: false,
     otpSent: undefined as boolean | null | undefined,

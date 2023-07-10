@@ -32,12 +32,10 @@ export default function Login(props: Props): JSX.Element {
   const [state, setState] = useState(props)
   const handleChange = useHandleChange(setState)
   const handleSignIn = useHandleSignIn(setState)
-  const [handleSubmit, submitInFlight] = useHandleSubmit(state)
+  const [handleSubmit, submitInFlight] = useHandleSubmit(state, setState)
   const switchSAML = useSwitchSAML(setState)
   const { pathname, search } = useLocation()
   const isSignUp = props.mode === 'signup'
-
-  console.log(state)
 
   return (
     <Container
@@ -90,19 +88,36 @@ export default function Login(props: Props): JSX.Element {
             required
           />
         ) : (
-          <TextField
-            key="email"
-            name="email"
-            type="email"
-            variant="outlined"
-            label="Your email"
-            placeholder="Enter your email address..."
-            InputLabelProps={{ shrink: true }}
-            onChange={handleChange}
-            disabled={submitInFlight}
-            fullWidth
-            required
-          />
+          <>
+            <TextField
+              sx={{ mb: 2 }}
+              key="email"
+              name="email"
+              type="email"
+              variant="outlined"
+              label="Your email"
+              placeholder="Enter your email address..."
+              InputLabelProps={{ shrink: true }}
+              onChange={handleChange}
+              disabled={submitInFlight}
+              fullWidth
+              required
+            />
+
+            <TextField
+              key="password"
+              name="password"
+              type="password"
+              variant="outlined"
+              label="Your password"
+              placeholder="Enter your password..."
+              InputLabelProps={{ shrink: true }}
+              onChange={handleChange}
+              disabled={submitInFlight}
+              fullWidth
+              required
+            />
+          </>
         )}
       </form>
 
@@ -115,6 +130,8 @@ export default function Login(props: Props): JSX.Element {
         children={
           state.otpSent
             ? 'Sign In'
+            : isSignUp
+            ? 'Sign Up with Email'
             : `Continue with ${state.saml ? 'SAML' : 'Email'}`
         }
         disabled={submitInFlight}
@@ -136,6 +153,39 @@ export default function Login(props: Props): JSX.Element {
           continue with {state.saml ? 'email' : 'SAML SSO'}
         </Link>
       </Typography> */}
+
+      {isSignUp ? (
+        <Typography
+          sx={{ color: 'text.secondary' }}
+          variant="body2"
+          align="center"
+        >
+          Already have an account?{' '}
+          <Link
+            sx={{ ':hover': { color: 'text.primary' } }}
+            color="inherit"
+            href={`login${search}`}
+            // onClick={switchSAML}
+          >
+            Log In
+          </Link>
+        </Typography>
+      ) : (
+        <Typography
+          sx={{ color: 'text.secondary' }}
+          variant="body2"
+          align="center"
+        >
+          Don&apos;t have an account?{' '}
+          <Link
+            sx={{ ':hover': { color: 'text.primary' } }}
+            color="inherit"
+            href={`signup${search}`}
+          >
+            Sign Up
+          </Link>
+        </Typography>
+      )}
 
       <Divider
         sx={{ color: 'divider', order: isSignUp ? undefined : -1 }}
@@ -159,7 +209,7 @@ export default function Login(props: Props): JSX.Element {
         fullWidth
       />
 
-      {/* <Button
+      <Button
         sx={{
           backgroundColor: (theme) =>
             theme.palette.mode === 'light' ? 'white' : undefined,
@@ -174,7 +224,7 @@ export default function Login(props: Props): JSX.Element {
         onClick={handleSignIn}
         data-method="apple.com"
         fullWidth
-      /> */}
+      />
 
       {/* <Button
         sx={{

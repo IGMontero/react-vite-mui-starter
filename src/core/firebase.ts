@@ -8,6 +8,8 @@ import {
   OAuthCredential,
   signInAnonymously,
   signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   type Auth,
   type UserCredential
 } from 'firebase/auth'
@@ -45,7 +47,33 @@ export function signIn(options: SignInOptions): Promise<UserCredential> {
     return signInAnonymously(auth)
   }
 
+  if (options.method === 'email') {
+    if (!options.email) {
+      throw new Error('Email is required')
+    }
+
+    if (!options.password) {
+      throw new Error('Password is required')
+    }
+
+    return signInWithEmailAndPassword(auth, options.email, options.password)
+  }
+
   throw new Error(`Not supported: ${options.method}`)
+}
+
+export function signUpWithEmail(
+  options: SignUpOptions
+): Promise<UserCredential> {
+  if (!options.email) {
+    throw new Error('Email is required')
+  }
+
+  if (!options.password) {
+    throw new Error('Password is required')
+  }
+
+  return createUserWithEmailAndPassword(auth, options.email, options.password)
 }
 
 export async function getExistingAccountFromError(
@@ -90,10 +118,17 @@ export type SignInMethod =
   | typeof FacebookAuthProvider.PROVIDER_ID
   | 'apple.com'
   | 'anonymous'
+  | 'email'
 
 export type SignInOptions = {
   method: SignInMethod
   email?: string
+  password?: string
+}
+
+export type SignUpOptions = {
+  email?: string
+  password?: string
 }
 
 export type Firebase = {
