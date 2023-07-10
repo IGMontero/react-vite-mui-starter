@@ -6,7 +6,7 @@ import { RootError } from '../layout/RootError.js'
 
 const Login = lazy(() => import('./Auth/Login.js'))
 
-// const Dashboard = lazy(() => import("./dashboard/Dashboard.js"));
+const Dashboard = lazy(() => import('./Dashboard/Dashboard.js'))
 
 /**
  * Application routes
@@ -29,8 +29,8 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     errorElement: <RootError />,
     children: [
-      { index: true, element: <Navigate to="/dashboard" replace /> }
-      // { path: 'dashboard', element: <Dashboard /> },
+      { index: true, element: <Navigate to="/dashboard" replace /> },
+      { path: 'dashboard', element: <Dashboard /> }
       // {
       //   path: 'settings',
       //   element: <SettingsLayout />,

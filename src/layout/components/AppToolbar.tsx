@@ -12,10 +12,10 @@ import {
 import * as React from 'react'
 import { Link as NavLink } from '../../common/Link.js'
 import { useCurrentUser } from '../../core/auth.js'
-// import { Logo } from './Logo.js'
-// import { NotificationsMenu } from './NotificationsMenu.js'
-// import { ThemeButton } from './ThemeButton.js'
-// import { UserMenu } from './UserMenu.js'
+import { Logo } from './Logo.js'
+import { NotificationsMenu } from './NotificationsMenu.js'
+import { ThemeButton } from './ThemeButton.js'
+import { UserMenu } from './UserMenu.js'
 
 export function AppToolbar(props: AppToolbarProps): JSX.Element {
   const { sx, ...other } = props
@@ -54,14 +54,14 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
         {/* App name / logo */}
 
         <Link color="inherit" underline="none" href="/" component={NavLink}>
-          Hi
+          <Logo />
         </Link>
 
         <span style={{ flexGrow: 1 }} />
 
         {/* Account related controls (icon buttons) */}
 
-        {/* {me !== undefined && <ThemeButton sx={{ mr: 1 }} />} */}
+        {me !== undefined && <ThemeButton sx={{ mr: 1 }} />}
 
         {me && (
           <Chip
@@ -141,7 +141,7 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
 
       {/* Pop-up menus */}
 
-      {/* <NotificationsMenu
+      <NotificationsMenu
         anchorEl={anchorEl.notifications}
         onClose={closeNotificationsMenu}
         PaperProps={{ sx: { marginTop: '8px' } }}
@@ -150,7 +150,7 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
         anchorEl={anchorEl.userMenu}
         onClose={closeUserMenu}
         PaperProps={{ sx: { marginTop: '8px' } }}
-      /> */}
+      />
     </AppBar>
   )
 }
