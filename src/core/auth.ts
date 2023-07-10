@@ -63,8 +63,21 @@ export const CurrentUser = atom<User | null>({
     (ctx) => {
       if (ctx.trigger === 'get') {
         return auth.onAuthStateChanged((user) => {
-          console.log('Curent user on auth state changeD!!', user)
           ctx.setSelf(user)
+        })
+      }
+    }
+  ]
+})
+
+export const AuthInitialized = atom<boolean | null>({
+  key: 'AuthInitialized',
+  dangerouslyAllowMutability: true,
+  effects: [
+    (ctx) => {
+      if (ctx.trigger === 'get') {
+        return auth.onAuthStateChanged((user) => {
+          ctx.setSelf(true)
         })
       }
     }
@@ -87,6 +100,12 @@ export const CurrentUser = atom<User | null>({
 export function useCurrentUser() {
   const value = useRecoilValueLoadable(CurrentUser)
   return value.state === 'loading' ? undefined : value.valueOrThrow()
+}
+
+export function useAuthInitialized() {
+  const value = useRecoilValueLoadable(AuthInitialized)
+  console.log(value, value.state)
+  return value.state === 'loading' ? false : value.valueOrThrow()
 }
 
 export function useSignIn() {

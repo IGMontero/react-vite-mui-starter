@@ -76,7 +76,7 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
               '.MuiChip-avatar': { width: 32, height: 32 }
             }}
             component={NavLink}
-            href="/"
+            href="/settings/account"
             avatar={
               <Avatar
                 alt={

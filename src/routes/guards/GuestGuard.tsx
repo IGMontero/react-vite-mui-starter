@@ -7,14 +7,14 @@ type Props = {
   children: React.ReactNode
 }
 
-export default function AuthGuard(props: Props): JSX.Element {
+export default function GuestGuard(props: Props): JSX.Element {
   const me = useCurrentUser()
   const authInitialized = useAuthInitialized()
 
   if (!authInitialized) return <LoadingScreen />
 
-  if (!me && authInitialized) {
-    return <Navigate to={'/login'} />
+  if (me) {
+    return <Navigate to={'/dashboard'} />
   }
 
   return <>{props.children}</>

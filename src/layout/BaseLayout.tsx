@@ -2,6 +2,7 @@ import { GlobalStyles, Toolbar } from '@mui/material'
 import * as React from 'react'
 import { Outlet } from 'react-router-dom'
 import { BaseToolbar } from './components/BaseToolbar'
+import LoadingScreen from './components/LoadingScreen'
 // import { BaseToolbar } from './components/BaseToolbar.js'
 
 /**
@@ -24,7 +25,7 @@ export function BaseLayout(): JSX.Element {
       <BaseToolbar />
       <Toolbar />
 
-      <React.Suspense>
+      <React.Suspense fallback={<LoadingScreen />}>
         <Outlet />
       </React.Suspense>
     </React.Fragment>

@@ -8,6 +8,7 @@ import AccountDetails from './settings/AccountDetails.js'
 import Privacy from './legal/Privacy.js'
 import Terms from './legal/Terms.js'
 import AuthGuard from './guards/AuthGuard.js'
+import GuestGuard from './guards/GuestGuard.js'
 
 const Login = lazy(() => import('./auth/Login.js'))
 
@@ -20,22 +21,26 @@ const Dashboard = lazy(() => import('./dashboard/Dashboard.js'))
 export const router = createBrowserRouter([
   {
     path: '',
-    element: <BaseLayout />,
+    element: (
+      <GuestGuard>
+        <BaseLayout />
+      </GuestGuard>
+    ),
     errorElement: <RootError />,
     children: [
       { path: 'login', element: <Login mode="login" /> },
       { path: 'signup', element: <Login mode="signup" /> },
       { path: 'privacy', element: <Privacy /> },
-      { path: 'terms', element: <Terms /> }
+      { path: 'terms', element: <Terms /> },
+      {
+        path: '',
+        element: <Navigate to="/login" replace />
+      }
     ]
   },
   {
     path: '/',
-    element: (
-      <AuthGuard>
-        <AppLayout />
-      </AuthGuard>
-    ),
+    element: <AppLayout />,
     errorElement: <RootError />,
     children: [
       {
@@ -44,19 +49,23 @@ export const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <Dashboard />
+        element: (
+          <AuthGuard>
+            <Dashboard />
+          </AuthGuard>
+        )
       },
       {
         path: 'settings',
-        element: <SettingsLayout />,
+        element: (
+          <AuthGuard>
+            <SettingsLayout />
+          </AuthGuard>
+        ),
         children: [
           {
             index: true,
-            element: (
-              <AuthGuard>
-                <Navigate to="/settings/account" />
-              </AuthGuard>
-            )
+            element: <Navigate to="/settings/account" />
           },
           { path: 'account', element: <AccountDetails /> }
         ]
