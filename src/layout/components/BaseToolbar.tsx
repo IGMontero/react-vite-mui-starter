@@ -19,9 +19,9 @@ export function BaseToolbar(props: AppBarProps): JSX.Element {
         <Box sx={{ flexGrow: 1 }} component="span" />
 
         {/* Close button */}
-        <IconButton component={Link} href="/">
+        {/* <IconButton component={Link} href="/">
           <Close />
-        </IconButton>
+        </IconButton> */}
       </Toolbar>
     </AppBar>
   )

@@ -52,7 +52,8 @@ export async function getIdToken() {
 export const SignInMethods: SignInMethod[] = [
   'google.com',
   'apple.com',
-  'anonymous'
+  'anonymous',
+  'email'
 ]
 
 export const CurrentUser = atom<User | null>({
@@ -62,6 +63,7 @@ export const CurrentUser = atom<User | null>({
     (ctx) => {
       if (ctx.trigger === 'get') {
         return auth.onAuthStateChanged((user) => {
+          console.log('Curent user on auth state changeD!!', user)
           ctx.setSelf(user)
         })
       }

@@ -209,7 +209,7 @@ export default function Login(props: Props): JSX.Element {
         fullWidth
       />
 
-      <Button
+      {/* <Button
         sx={{
           backgroundColor: (theme) =>
             theme.palette.mode === 'light' ? 'white' : undefined,
@@ -224,7 +224,7 @@ export default function Login(props: Props): JSX.Element {
         onClick={handleSignIn}
         data-method="apple.com"
         fullWidth
-      />
+      /> */}
 
       {/* <Button
         sx={{

@@ -2,7 +2,7 @@ import { Api, GitHub } from '@mui/icons-material'
 import { Box, Button, Container, Typography } from '@mui/material'
 import { usePageEffect } from '../../core/page.js'
 
-export default function Home(): JSX.Element {
+export default function Dashboard(): JSX.Element {
   usePageEffect({ title: 'React App' })
 
   return (

@@ -7,6 +7,7 @@ import SettingsLayout from './settings/SettingsLayout.js'
 import AccountDetails from './settings/AccountDetails.js'
 import Privacy from './legal/Privacy.js'
 import Terms from './legal/Terms.js'
+import AuthGuard from './guards/AuthGuard.js'
 
 const Login = lazy(() => import('./auth/Login.js'))
 
@@ -29,17 +30,34 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path: '',
-    element: <AppLayout />,
+    path: '/',
+    element: (
+      <AuthGuard>
+        <AppLayout />
+      </AuthGuard>
+    ),
     errorElement: <RootError />,
     children: [
-      { index: true, element: <Navigate to="/dashboard" replace /> },
-      { path: 'dashboard', element: <Dashboard /> },
+      {
+        index: true,
+        element: <Navigate to="/dashboard" replace />
+      },
+      {
+        path: 'dashboard',
+        element: <Dashboard />
+      },
       {
         path: 'settings',
         element: <SettingsLayout />,
         children: [
-          { index: true, element: <Navigate to="/settings/account" /> },
+          {
+            index: true,
+            element: (
+              <AuthGuard>
+                <Navigate to="/settings/account" />
+              </AuthGuard>
+            )
+          },
           { path: 'account', element: <AccountDetails /> }
         ]
       }
