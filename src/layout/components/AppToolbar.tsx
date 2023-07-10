@@ -61,7 +61,7 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
 
         {/* Account related controls (icon buttons) */}
 
-        {me !== undefined && <ThemeButton sx={{ mr: 1 }} />}
+        {/* {me !== undefined && <ThemeButton sx={{ mr: 1 }} />} */}
 
         {me && (
           <Chip
@@ -79,12 +79,18 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
             href="/"
             avatar={
               <Avatar
-                alt={me?.displayName || (me?.isAnonymous ? 'Anonymous' : '')}
+                alt={
+                  me?.displayName ||
+                  me?.email ||
+                  (me?.isAnonymous ? 'Anonymous' : '')
+                }
                 src={me?.photoURL || undefined}
               />
             }
             label={getFirstName(
-              me?.displayName || (me?.isAnonymous ? 'Anonymous' : '')
+              me?.displayName ||
+                me?.email ||
+                (me?.isAnonymous ? 'Anonymous' : '')
             )}
           />
         )}
