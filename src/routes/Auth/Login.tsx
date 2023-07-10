@@ -37,6 +37,8 @@ export default function Login(props: Props): JSX.Element {
   const { pathname, search } = useLocation()
   const isSignUp = props.mode === 'signup'
 
+  console.log(state)
+
   return (
     <Container
       maxWidth="xs"
@@ -93,7 +95,7 @@ export default function Login(props: Props): JSX.Element {
             name="email"
             type="email"
             variant="outlined"
-            label="Work email"
+            label="Your email"
             placeholder="Enter your email address..."
             InputLabelProps={{ shrink: true }}
             onChange={handleChange}
@@ -119,7 +121,7 @@ export default function Login(props: Props): JSX.Element {
         fullWidth
       />
 
-      <Typography
+      {/* <Typography
         sx={{ color: 'text.secondary' }}
         variant="body2"
         align="center"
@@ -133,7 +135,7 @@ export default function Login(props: Props): JSX.Element {
         >
           continue with {state.saml ? 'email' : 'SAML SSO'}
         </Link>
-      </Typography>
+      </Typography> */}
 
       <Divider
         sx={{ color: 'divider', order: isSignUp ? undefined : -1 }}
@@ -157,7 +159,7 @@ export default function Login(props: Props): JSX.Element {
         fullWidth
       />
 
-      <Button
+      {/* <Button
         sx={{
           backgroundColor: (theme) =>
             theme.palette.mode === 'light' ? 'white' : undefined,
@@ -172,9 +174,9 @@ export default function Login(props: Props): JSX.Element {
         onClick={handleSignIn}
         data-method="apple.com"
         fullWidth
-      />
+      /> */}
 
-      <Button
+      {/* <Button
         sx={{
           backgroundColor: (theme) =>
             theme.palette.mode === 'light' ? 'white' : undefined,
@@ -189,7 +191,7 @@ export default function Login(props: Props): JSX.Element {
         onClick={handleSignIn}
         data-method="anonymous"
         fullWidth
-      />
+      /> */}
 
       <Notice sx={{ mt: 4 }} />
     </Container>

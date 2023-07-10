@@ -12,6 +12,8 @@ export type Config = {
     apiKey: string
     authDomain: string
     measurementId: string
+    storageBucket: string
+    messagingSenderId: string
   }
 }
 

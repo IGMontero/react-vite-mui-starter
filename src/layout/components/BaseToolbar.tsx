@@ -1,7 +1,7 @@
 import { Close } from '@mui/icons-material'
 import { AppBar, AppBarProps, Box, IconButton, Toolbar } from '@mui/material'
 import { Link } from '../../common/Link.js'
-// import { Logo } from './Logo.js'
+import { Logo } from './Logo.js'
 
 export function BaseToolbar(props: AppBarProps): JSX.Element {
   return (
@@ -11,7 +11,7 @@ export function BaseToolbar(props: AppBarProps): JSX.Element {
         <Box
           sx={{ textDecoration: 'none', color: 'inherit' }}
           component={Link}
-          // children={<Logo />}
+          children={<Logo />}
           href="/"
         />
 

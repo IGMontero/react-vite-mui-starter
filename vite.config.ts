@@ -21,11 +21,13 @@ const configs = envNames.map((envName): [EnvName, Config] => {
         hostname: new URL(env.APP_ORIGIN).hostname
       },
       firebase: {
-        projectId: env.GOOGLE_CLOUD_PROJECT,
+        projectId: env.FIREBASE_PROJECT_ID,
         appId: env.FIREBASE_APP_ID,
         apiKey: env.FIREBASE_API_KEY,
         authDomain: env.FIREBASE_AUTH_DOMAIN,
-        measurementId: env.GA_MEASUREMENT_ID
+        measurementId: env.GA_MEASUREMENT_ID,
+        storageBucket: env.FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: env.FIREBASE_MESSAGING_SENDER_ID
       }
     }
   ]
