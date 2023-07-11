@@ -31,6 +31,7 @@
     "@mui/icons-material": "^5.13.7",
     "@mui/material": "^5.13.7",
     "@types/lodash": "^4.14.195",
+    "@types/numeral": "^2.0.2",
     "envars": "^0.4.0",
     "firebase": "^10.0.0",
     "framer-motion": "^10.12.18",
