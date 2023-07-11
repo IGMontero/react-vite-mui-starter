@@ -1,13 +1,16 @@
-import { Api, GitHub } from '@mui/icons-material'
-import { Box, Button, Stack, Container, Typography } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import { usePageEffect } from '../../core/page.js'
+import _ from 'lodash'
 
 import { useState } from 'react'
-import products from '../../_mock/products.js'
 import ShopProductList from '../../components/products/ShopProductList.js'
+import medicines from '../../_mock/medicines.js'
+import { useCurrentUser } from '../../core/auth.js'
 
 export default function Dashboard(): JSX.Element {
   usePageEffect({ title: 'React App' })
+
+  const me = useCurrentUser()
 
   const [openFilter, setOpenFilter] = useState(false)
 
@@ -20,13 +23,13 @@ export default function Dashboard(): JSX.Element {
   }
 
   return (
-    <Container sx={{ py: '20vh' }} maxWidth="lg">
+    <Container sx={{ py: '15vh' }} maxWidth="lg">
       <Typography sx={{ mb: 2 }} variant="h1" align="center">
-        Welcome to our app!
+        Welcome back{me?.displayName && `, ${_.capitalize(me.displayName)}`}!
       </Typography>
 
       <Typography sx={{ mb: 4 }} variant="h3" align="center">
-        Lorem ipsum.
+        Get a massive discount on the following products:
       </Typography>
 
       <Typography variant="h4" sx={{ mb: 5 }}>
@@ -50,7 +53,7 @@ export default function Dashboard(): JSX.Element {
         </Stack>
       </Stack> */}
 
-      <ShopProductList loading={false} products={products} />
+      <ShopProductList loading={false} products={medicines} />
       {/* <ProductCartWidget /> */}
     </Container>
   )

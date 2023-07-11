@@ -4,6 +4,7 @@ import { Box, Card, Link, Typography, Stack } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { fCurrency } from '../../utils'
 import { Product } from './Products.types'
+import Label from '../common/Label'
 
 // ----------------------------------------------------------------------
 
@@ -28,19 +29,19 @@ export default function ShopProductCard({
     <Card>
       <Box sx={{ pt: '100%', position: 'relative' }}>
         {status && (
-          <Typography
-            // variant="filled"
+          <Label
+            variant="filled"
             color={(status === 'sale' && 'error') || 'info'}
             sx={{
+              zIndex: 9,
               top: 16,
               right: 16,
-              zIndex: 9,
               position: 'absolute',
               textTransform: 'uppercase'
             }}
           >
             {status}
-          </Typography>
+          </Label>
         )}
         <ProductImgStyle alt={name} src={cover} />
       </Box>

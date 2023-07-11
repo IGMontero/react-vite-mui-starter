@@ -3,6 +3,7 @@ import * as React from 'react'
 import { Outlet } from 'react-router-dom'
 import { BaseToolbar } from './components/BaseToolbar'
 import LoadingScreen from './components/LoadingScreen'
+import Copyright from './components/Copyright'
 // import { BaseToolbar } from './components/BaseToolbar.js'
 
 /**
@@ -28,6 +29,8 @@ export function BaseLayout(): JSX.Element {
       <React.Suspense fallback={<LoadingScreen />}>
         <Outlet />
       </React.Suspense>
+
+      <Copyright />
     </React.Fragment>
   )
 }

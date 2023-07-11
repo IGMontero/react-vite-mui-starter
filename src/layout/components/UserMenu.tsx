@@ -62,7 +62,7 @@ export function UserMenu(props: UserMenuProps): JSX.Element {
           fontSize: '0.75rem'
         }}
       >
-        <span>&copy; 2023 Drug Voucher App</span>
+        <span>&copy; 2023 Medicine Voucher App</span>
         <span style={{ padding: '0 4px' }}>•</span>
         <Link
           sx={{ color: 'inherit' }}
