@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import envars from 'envars'
-import { Config, EnvName } from './src/core/config.js'
+import { Config, EnvName } from './src/core/config'
 import { resolve } from 'node:path'
 
 const envNames: EnvName[] = ['prod', 'test', 'local']

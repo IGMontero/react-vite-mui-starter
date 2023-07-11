@@ -11,12 +11,12 @@ import {
 import { type UserCredential } from 'firebase/auth'
 import * as React from 'react'
 import { atom, useRecoilCallback, useRecoilValue } from 'recoil'
-import { SignInMethods } from '../core/auth.js'
-import { type ExistingAccount, type FirebaseError } from '../core/firebase.js'
+import { SignInMethods } from '../core/auth'
+import { type ExistingAccount, type FirebaseError } from '../core/firebase'
 import {
   LoginButton,
   LoginButtonProps
-} from '../layout/components/LoginButton.js'
+} from '../layout/components/LoginButton'
 
 export const LoginDialogState = atom<LoginDialogAtom>({
   key: 'LoginDialogState',
@@ -101,7 +101,7 @@ export function useOpenLoginDialog() {
             params?.onClose?.(event, reason)
             if (!event.isDefaultPrevented()) {
               ctx.set(LoginDialogState, (prev) => ({ ...prev, open: false }))
-              const fb = await import('../core/firebase.js')
+              const fb = await import('../core/firebase')
               throw new fb.FirebaseError(
                 fb.AuthErrorCodes.USER_CANCELLED,
                 'Login canceled.'
@@ -110,7 +110,7 @@ export function useOpenLoginDialog() {
           },
           async signIn(event, method, linkTo) {
             event.preventDefault()
-            const fb = await import('../core/firebase.js')
+            const fb = await import('../core/firebase')
             try {
               const user = await fb.signIn({ method, email: linkTo?.email })
 

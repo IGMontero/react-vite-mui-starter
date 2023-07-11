@@ -1,5 +1,5 @@
 import { SvgIcon, SvgIconProps } from '@mui/material'
-import { type SignInMethod } from '../core/auth.js'
+import { type SignInMethod } from '../core/auth'
 
 export function AuthIcon(props: AuthIconProps): JSX.Element {
   const { variant, ...other } = props

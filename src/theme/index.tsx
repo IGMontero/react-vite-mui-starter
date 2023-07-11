@@ -4,9 +4,9 @@ import {
 } from '@mui/material'
 import { createTheme } from '@mui/material/styles'
 import { atom, selectorFamily, useRecoilCallback, useRecoilValue } from 'recoil'
-import { components } from './components.js'
-import palettes from './palettes.js'
-import * as typography from './typography.js'
+import { components } from './components'
+import palettes from './palettes'
+import * as typography from './typography'
 
 /**
  * The name of the selected UI theme.

@@ -13,7 +13,7 @@ import {
   type Auth,
   type UserCredential
 } from 'firebase/auth'
-import { config } from './config.js'
+import { config } from './config'
 export { AuthErrorCodes, linkWithCredential } from 'firebase/auth'
 export { FirebaseError }
 

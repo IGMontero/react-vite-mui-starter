@@ -1,13 +1,13 @@
 import { type User, type UserCredential } from 'firebase/auth'
 import * as React from 'react'
 import { atom, useRecoilValueLoadable } from 'recoil'
-import { useOpenLoginDialog } from '../dialogs/LoginDialog.js'
+import { useOpenLoginDialog } from '../dialogs/LoginDialog'
 import {
   auth,
   signIn,
   type SignInMethod,
   type SignInOptions
-} from './firebase.js'
+} from './firebase'
 
 let idTokenPromise: Promise<string | null> | undefined
 let idTokenPromiseResolve: ((value: Promise<string> | null) => void) | undefined
@@ -146,7 +146,7 @@ export function useAuthCallback<T extends AuthCallback>(
   const openLoginDialog = useOpenLoginDialog()
   return React.useCallback(
     async (...args: AuthCallbackParameters<T>) => {
-      const fb = await import('../core/firebase.js')
+      const fb = await import('../core/firebase')
 
       try {
         if (!fb.auth.currentUser) {

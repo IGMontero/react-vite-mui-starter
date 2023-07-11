@@ -1,18 +1,18 @@
 import { lazy } from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
-import { AppLayout } from '../layout/AppLayout.js'
-import { BaseLayout } from '../layout/BaseLayout.js'
-import { RootError } from '../layout/RootError.js'
-import SettingsLayout from './settings/SettingsLayout.js'
-import AccountDetails from './settings/AccountDetails.js'
-import Privacy from './legal/Privacy.js'
-import Terms from './legal/Terms.js'
-import AuthGuard from './guards/AuthGuard.js'
-import GuestGuard from './guards/GuestGuard.js'
+import { AppLayout } from '../layout/AppLayout'
+import { BaseLayout } from '../layout/BaseLayout'
+import { RootError } from '../layout/RootError'
+import SettingsLayout from './settings/SettingsLayout'
+import AccountDetails from './settings/AccountDetails'
+import Privacy from './legal/Privacy'
+import Terms from './legal/Terms'
+import AuthGuard from './guards/AuthGuard'
+import GuestGuard from './guards/GuestGuard'
 
-const Login = lazy(() => import('./auth/Login.js'))
+const Login = lazy(() => import('./auth/Login'))
 
-const Dashboard = lazy(() => import('./dashboard/Dashboard.js'))
+const Dashboard = lazy(() => import('./dashboard/Dashboard'))
 
 /**
  * Application routes

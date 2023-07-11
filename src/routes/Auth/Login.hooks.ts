@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signIn, SignInMethod, signUpWithEmail } from '../../core/firebase.js'
+import { signIn, SignInMethod, signUpWithEmail } from '../../core/firebase'
 
 /**
  * Handles login / signup via Email

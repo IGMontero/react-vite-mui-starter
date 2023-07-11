@@ -1,8 +1,8 @@
 import { Toolbar } from '@mui/material'
 import * as React from 'react'
 import { Outlet } from 'react-router-dom'
-import { AppToolbar } from './components/AppToolbar.js'
-import Copyright from './components/Copyright.js'
+import { AppToolbar } from './components/AppToolbar'
+import Copyright from './components/Copyright'
 
 /**
  * The primary application layout.
