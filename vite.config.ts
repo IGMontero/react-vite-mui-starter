@@ -11,6 +11,8 @@ const configs = envNames.map((envName): [EnvName, Config] => {
   const envDir = resolve(__dirname, './env')
   const env = envars.config({ env: envName, cwd: envDir })
 
+  console.log(env.APP_ORIGIN)
+
   return [
     envName,
     {
@@ -38,7 +40,7 @@ process.env.VITE_CONFIG = JSON.stringify(Object.fromEntries(configs))
 // https://vitejs.dev/config https://vitest.dev/config
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
-  // base: '/react-vite-mui-starter/',
+  base: '/',
   test: {
     globals: true,
     environment: 'happy-dom',
