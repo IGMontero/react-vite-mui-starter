@@ -18,6 +18,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "fulldeploy": "npm run predeploy && npm run deploy",
+    "preview": "vite preview",
     "serve": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
