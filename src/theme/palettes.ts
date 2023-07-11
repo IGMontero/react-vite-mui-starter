@@ -4,7 +4,7 @@ export const light: PaletteOptions = {
   mode: 'light',
 
   primary: {
-    main: 'rgb(24,119,242)'
+    main: '#C29147'
   },
 
   background: {
@@ -21,11 +21,11 @@ export const dark: PaletteOptions = {
   mode: 'dark',
 
   primary: {
-    main: 'rgb(45,136,255)'
+    main: '#C29147'
   },
 
   background: {
-    default: 'rgb(24,25,26)'
+    default: '#272727'
   },
 
   example: {

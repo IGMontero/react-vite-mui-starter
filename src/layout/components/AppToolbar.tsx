@@ -53,7 +53,13 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
       <Toolbar>
         {/* App name / logo */}
 
-        <Link color="inherit" underline="none" href="/" component={NavLink}>
+        <Link
+          sx={{ color: (theme) => theme.palette.primary.main }}
+          color="inherit"
+          underline="none"
+          href="/"
+          component={NavLink}
+        >
           <Logo />
         </Link>
 

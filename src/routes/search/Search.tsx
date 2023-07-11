@@ -35,6 +35,8 @@ export default function Search(props: Props): JSX.Element {
     state.zipCode &&
     state.zipCode.length > 0
 
+  const hasSearchResults = state.autocompleteResults.length > 0
+
   // const handleAutocompleteInputChange = async (
   //   evt: React.SyntheticEvent<Element, Event>,
   //   value: string | null
@@ -64,7 +66,8 @@ export default function Search(props: Props): JSX.Element {
       </Typography>
 
       <Typography sx={{ mb: 4 }} variant="h3" align="center">
-        Search for your medicine and get a massive discount. Up to 80% savings!
+        Search for your medicine and get a massive discount.
+        <br /> Up to 80% savings!
       </Typography>
 
       <Stack

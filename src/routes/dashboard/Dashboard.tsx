@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material'
+import { Box, Button, Container, Typography } from '@mui/material'
 import { usePageEffect } from '../../core/page.js'
 import _ from 'lodash'
 
@@ -6,6 +6,7 @@ import { useState } from 'react'
 import ShopProductList from '../../components/products/ShopProductList.js'
 import medicines from '../../_mock/medicines.js'
 import { useCurrentUser } from '../../core/auth.js'
+import { Link } from 'react-router-dom'
 
 export default function Dashboard(): JSX.Element {
   usePageEffect({ title: 'Dashboard' })
@@ -32,6 +33,12 @@ export default function Dashboard(): JSX.Element {
       <Typography sx={{ mb: 4 }} variant="h3" align="center">
         Get a massive discount on the following products:
       </Typography>
+
+      <Box display="flex" justifyContent="center">
+        <Button variant="contained" size="large" component={Link} to="/search">
+          Search
+        </Button>
+      </Box>
 
       <Typography variant="h4" sx={{ mb: 5 }}>
         Products

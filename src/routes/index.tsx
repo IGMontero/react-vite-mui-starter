@@ -47,16 +47,16 @@ export const router = createBrowserRouter([
         index: true,
         element: <Navigate to="/dashboard" replace />
       },
-      // {
-      //   path: 'dashboard',
-      //   element: (
-      //     <AuthGuard>
-      //       <Dashboard />
-      //     </AuthGuard>
-      //   )
-      // },
       {
         path: 'dashboard',
+        element: (
+          <AuthGuard>
+            <Dashboard />
+          </AuthGuard>
+        )
+      },
+      {
+        path: 'search',
         element: (
           <AuthGuard>
             <Search />
