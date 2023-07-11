@@ -7,7 +7,7 @@ import SettingsLayout from './settings/SettingsLayout'
 import AuthGuard from './guards/AuthGuard'
 import GuestGuard from './guards/GuestGuard'
 
-const Login = lazy(() => import('./auth/Login'))
+const Login = lazy(() => import('./authentication/Login'))
 const Privacy = lazy(() => import('./legal/Privacy'))
 const Terms = lazy(() => import('./legal/Terms'))
 const AccountDetails = lazy(() => import('./settings/AccountDetails'))
