@@ -25,7 +25,8 @@ export default function Dashboard(): JSX.Element {
   return (
     <Container sx={{ py: '15vh' }} maxWidth="lg">
       <Typography sx={{ mb: 2 }} variant="h1" align="center">
-        Welcome back{me?.displayName && `, ${_.capitalize(me.displayName)}`}!
+        Welcome back
+        {me?.displayName && `, ${_.capitalize(me.displayName.split(' ')[0])}`}!
       </Typography>
 
       <Typography sx={{ mb: 4 }} variant="h3" align="center">
