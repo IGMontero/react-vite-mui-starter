@@ -8,7 +8,7 @@ import medicines from '../../_mock/medicines.js'
 import { useCurrentUser } from '../../core/auth.js'
 
 export default function Dashboard(): JSX.Element {
-  usePageEffect({ title: 'React App' })
+  usePageEffect({ title: 'Dashboard' })
 
   const me = useCurrentUser()
 
@@ -23,7 +23,7 @@ export default function Dashboard(): JSX.Element {
   }
 
   return (
-    <Container sx={{ py: '15vh' }} maxWidth="lg">
+    <Container sx={{ py: '15vh' }} maxWidth="md">
       <Typography sx={{ mb: 2 }} variant="h1" align="center">
         Welcome back
         {me?.displayName && `, ${_.capitalize(me.displayName.split(' ')[0])}`}!
