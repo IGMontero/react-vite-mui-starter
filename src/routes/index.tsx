@@ -4,14 +4,13 @@ import { AppLayout } from '../layout/AppLayout'
 import { BaseLayout } from '../layout/BaseLayout'
 import { RootError } from '../layout/RootError'
 import SettingsLayout from './settings/SettingsLayout'
-import AccountDetails from './settings/AccountDetails'
-import Privacy from './legal/Privacy'
-import Terms from './legal/Terms'
 import AuthGuard from './guards/AuthGuard'
 import GuestGuard from './guards/GuestGuard'
 
 const Login = lazy(() => import('./auth/Login'))
-
+const Privacy = lazy(() => import('./legal/Privacy'))
+const Terms = lazy(() => import('./legal/Terms'))
+const AccountDetails = lazy(() => import('./settings/AccountDetails'))
 const Dashboard = lazy(() => import('./dashboard/Dashboard'))
 
 /**
