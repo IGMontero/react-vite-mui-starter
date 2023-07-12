@@ -6,15 +6,12 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Stack,
   Typography
 } from '@mui/material'
 import { usePageEffect } from '../../core/page.js'
 import _ from 'lodash'
 
 import { useState } from 'react'
-import ShopProductList from '../../components/products/ShopProductList.js'
-import medicines from '../../_mock/medicines.js'
 import { useCurrentUser } from '../../core/auth.js'
 import { Link } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search'

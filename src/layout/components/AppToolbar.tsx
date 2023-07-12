@@ -80,7 +80,7 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
                   : x.palette.grey[700],
               '.MuiChip-avatar': { width: 32, height: 32 }
             }}
-            component={NavLink}
+            component={NavLink as React.ElementType<any>}
             href="/settings/account"
             avatar={
               <Avatar
@@ -132,7 +132,7 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
         )}
         {me === null && (
           <Button
-            component={NavLink}
+            component={NavLink as React.ElementType<any>}
             variant="text"
             href="/login"
             color="inherit"
@@ -141,7 +141,7 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
         )}
         {me === null && (
           <Button
-            component={NavLink}
+            component={NavLink as React.ElementType<any>}
             variant="outlined"
             href="/signup"
             color="inherit"

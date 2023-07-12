@@ -97,6 +97,11 @@ export function useCurrentUser() {
   return value.state === 'loading' ? undefined : value.valueOrThrow()
 }
 
+export function useIsAuthenticated() {
+  const user = useCurrentUser()
+  return user !== null && user !== undefined
+}
+
 export function useAuthInitialized() {
   const value = useRecoilValueLoadable(AuthInitialized)
   return value.state === 'loading' ? false : value.valueOrThrow()
