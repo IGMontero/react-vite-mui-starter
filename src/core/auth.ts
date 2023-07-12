@@ -2,12 +2,7 @@ import { type User, type UserCredential } from 'firebase/auth'
 import * as React from 'react'
 import { atom, useRecoilValueLoadable } from 'recoil'
 import { useOpenLoginDialog } from '../dialogs/LoginDialog'
-import {
-  auth,
-  signIn,
-  type SignInMethod,
-  type SignInOptions
-} from './firebase'
+import { auth, signIn, type SignInMethod, type SignInOptions } from './firebase'
 
 let idTokenPromise: Promise<string | null> | undefined
 let idTokenPromiseResolve: ((value: Promise<string> | null) => void) | undefined
@@ -104,7 +99,6 @@ export function useCurrentUser() {
 
 export function useAuthInitialized() {
   const value = useRecoilValueLoadable(AuthInitialized)
-  console.log(value, value.state)
   return value.state === 'loading' ? false : value.valueOrThrow()
 }
 

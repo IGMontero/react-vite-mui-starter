@@ -10,12 +10,11 @@ import {
   Toolbar
 } from '@mui/material'
 import * as React from 'react'
-import { Link as NavLink } from '../../common/Link'
 import { useCurrentUser } from '../../core/auth'
 import { Logo } from './Logo'
 import { NotificationsMenu } from './NotificationsMenu'
-import { ThemeButton } from './ThemeButton'
 import { UserMenu } from './UserMenu'
+import { Link as NavLink } from 'react-router-dom'
 
 export function AppToolbar(props: AppToolbarProps): JSX.Element {
   const { sx, ...other } = props
@@ -57,7 +56,7 @@ export function AppToolbar(props: AppToolbarProps): JSX.Element {
           sx={{ color: (theme) => theme.palette.primary.main }}
           color="inherit"
           underline="none"
-          href="/"
+          to="/dashboard"
           component={NavLink}
         >
           <Logo />

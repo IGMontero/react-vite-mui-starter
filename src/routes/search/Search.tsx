@@ -96,7 +96,7 @@ export default function Search(props: Props): JSX.Element {
           autoComplete
           filterSelectedOptions
           noOptionsText="No drugs found"
-          componentName="search"
+          // componentName="search"
           inputValue={state.search}
           onInputChange={handleAutocompleteInputChange}
           onChange={handleAutocompleteChange}
@@ -104,6 +104,7 @@ export default function Search(props: Props): JSX.Element {
             <TextField
               {...params}
               label="Drug Name"
+              name="search"
               InputProps={{
                 ...params.InputProps,
                 name: 'search',
