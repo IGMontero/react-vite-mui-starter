@@ -32,7 +32,7 @@ export default function Dashboard(): JSX.Element {
   }
 
   return (
-    <Container sx={{ py: '15vh' }} maxWidth="lg">
+    <Container sx={{ py: { xs: '8vh', md: '15vh' } }} maxWidth="lg">
       <Typography sx={{ mb: 4 }} variant="h1" align="center">
         Welcome back
         {me?.displayName && `, ${_.capitalize(me.displayName.split(' ')[0])}`}!
